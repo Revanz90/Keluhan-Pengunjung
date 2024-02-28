@@ -35,8 +35,8 @@
                     </a>
                 </li>
                 <li class="nav-header">MAIN MENU</li>
-                <li class="nav-item {{ request()->routeIs('datasimpanan') ? 'menu-open' : '' }}">
-                    <a href="#" class="nav-link">
+                <li class="nav-item {{ request()->routeIs('keluhan_pengunjung') ? 'menu-open' : '' }}">
+                    <a href="{{ route('keluhan_pengunjung') }}" class="nav-link">
                         <i class="nav-icon far fa-folder-open"></i>
                         <p>
                             Keluhan Pengunjung

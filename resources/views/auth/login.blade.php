@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> Simpan Pinjam | Login</title>
+    <title> Keluhan Pengunjung | Login</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -22,8 +22,8 @@
         <!-- /.login-logo -->
         <div class="card card-outline card-info">
             <div class="card-header text-center">
-                <a href="../../index2.html" class="h6">Sistem Informasi Simpan Pinjam Pemberdayaan
-                    Kesejahteraan Keluarga (PKK) Kelurahan Kalitirto, Berbah, Sleman</a>
+                <a href="../../index2.html" class="h6">Sistem Informasi Klasifikasi Keluhan Pengunjung Pada Museum
+                    Pusat TNI AU Dirgantara Mandala</a>
                 @include('app-layout/alert')
             </div>
             <div class="card-body">

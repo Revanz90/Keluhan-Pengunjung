@@ -6,9 +6,8 @@
             <div class="row">
                 <div class="col-12 text-center">
                     <br>
-                    <h5><strong>Simpan Pinjam PKK</strong></h5>
-                    <h6>Sistem Informasi Simpan Pinjam Pemberdayaan
-                        Kesejahteraan Keluarga (PKK) Kelurahan Kalitirto, Berbah, Sleman</h6>
+                    <h5><strong>Keluhan Pengunjung</strong></h5>
+                    <h6>Sistem Informasi Klasifikasi Keluhan Pengunjung pada museum pusat TNI AU Dirgantara Mandala</h6>
                 </div>
             </div>
         </div>
