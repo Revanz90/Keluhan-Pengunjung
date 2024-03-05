@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DataKeluhanController;
 use App\Http\Controllers\KeluhanPengunjungController;
+use App\Http\Controllers\PertanyaanController;
 use FontLib\Table\Type\name;
 use Illuminate\Support\Facades\Route;
 
@@ -30,8 +32,13 @@ Route::get('akun', [AkunController::class, 'akun'])->name('akun');
 Route::middleware('auth')->group(function () {
 
     Route::get('/keluhan_pengunjung', [KeluhanPengunjungController::class, 'index'])->name('keluhan_pengunjung');
-    Route::post('/keluhan_pengunjung', [KeluhanPengunjungController::class, 'store'])->name('storedatapertanyaan');
-    Route::delete('/{id}/keluhan_pengunjung', [KeluhanPengunjungController::class, 'delete'])->name('delete_pertanyaan');
+    Route::post('/keluhan_pengunjung', [KeluhanPengunjungController::class, 'store'])->name('store_keluhan_pengunjung');
+
+    Route::get('/data_keluhan', [DataKeluhanController::class, 'index'])->name('data_keluhan');
+
+    Route::get('/pertanyaan', [PertanyaanController::class, 'index'])->name('pertanyaan');
+    Route::post('/pertanyaan', [PertanyaanController::class, 'store'])->name('storedatapertanyaan');
+    Route::delete('/{id}/pertanyaan', [PertanyaanController::class, 'delete'])->name('delete_pertanyaan');
 
 });
 

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Answer;
+use App\Models\Complaint;
 use App\Models\Question;
+use App\Models\Visitor;
 use Illuminate\Http\Request;
 
 class KeluhanPengunjungController extends Controller
@@ -16,32 +19,46 @@ class KeluhanPengunjungController extends Controller
     public function store(Request $request)
     {
         try {
-            $questions = new Question();
+            $answer = new Answer();
+            $complaint = new Complaint();
+            $visitor = new Visitor();
 
             //validasi yang wajib diinputkan pada request payloads
             $validate = $request->validate([
-                'pertanyaan' => 'required',
+                'nama' => 'required',
+                'umur' => 'required',
+                'no_handphone' => 'required',
+                'alamat' => 'required',
+                'keluhan' => 'required',
             ]);
 
-            $questions->pertanyaan = $request->input('pertanyaan');
-            $questions->save();
-            // dd($question);
+            $visitor->nama = $request->input('nama');
+            $visitor->umur = $request->input('umur');
+            $visitor->no_handphone = $request->input('no_handphone');
+            $visitor->alamat = $request->input('alamat');
+            $visitor->save();
 
-            return redirect()->back()->with('success', 'Berhasil menambahkan Pertanyaan');
+            $complaint->keluhan = $request->input('keluhan');
+            $complaint->visitor_id = $visitor->id;
+            $complaint->save();
+
+            // Simpan jawaban
+            foreach ($request->all() as $key => $value) {
+                if (strpos($key, 'jawaban') !== false && $value) {
+                    $questionId = str_replace('jawaban', '', $key);
+                    $answer = new Answer();
+                    $answer->jawaban = $value;
+                    $answer->pertanyaan_id = $request->input('question_id' . $questionId);
+                    $answer->visitor_id = $visitor->id;
+                    $answer->save();
+                }
+            }
+
+            return redirect()->back()->with('success', 'Berhasil menambahkan Keluhan');
         } catch (\Throwable $th) {
-            return redirect()->back()->with('error', 'Gagal menambahkan Pertanyaan');
+            dd($th);
+            return redirect()->back()->with('error', 'Gagal menambahkan Keluhan');
         }
-    }
 
-    public function delete($id)
-    {
-        try {
-            $question = Question::findOrFail($id); // Mengambil pertanyaan dengan ID yang diberikan
-            $question->delete(); // Menghapus pertanyaan dari database
-
-            return redirect()->back()->with('success', 'Pertanyaan berhasil dihapus');
-        } catch (\Throwable $th) {
-            return redirect()->back()->with('error', 'Gagal menghapus Pertanyaan');
-        }
     }
 }
