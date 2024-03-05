@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Answer;
+use App\Models\Visitor;
 use Illuminate\Http\Request;
 
 class DataKeluhanController extends Controller
 {
     public function index()
     {
-        return view('layouts.data_keluhan');
+        $visitor = Visitor::all()->sortByDesc('created_at');
+        return view('layouts.data_keluhan', ['datas' => $visitor]);
     }
 
     public function store(Request $request)
