@@ -43,32 +43,25 @@
                         </p>
                     </a>
                 </li>
-                {{-- <li class="nav-item {{ request()->routeIs('datapinjaman') ? 'menu-open' : '' }}">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon far fa-envelope"></i>
+                <li class="nav-item {{ request()->routeIs('pertanyaan') ? 'menu-open' : '' }}">
+                    <a href="{{ route('pertanyaan') }}" class="nav-link">
+                        <i class="nav-icon far fa-folder-open"></i>
                         <p>
-                            Data Pinjaman
-                        </p>
-                    </a>
-                </li> --}}
-                {{-- @hasrole('super-admin|admin|kamus') --}}
-                {{-- <li class="nav-item {{ request()->routeIs('dataangsuran') ? 'menu-open' : '' }}">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon far fa-envelope"></i>
-                        <p>
-                            Data Angsuran
+                            Pertanyaan
                         </p>
                     </a>
                 </li>
-                <li class="nav-item {{ request()->routeIs('dataanggota') ? 'menu-open' : '' }}">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon far fa-user"></i>
-                        <p>
-                            Data Anggota
-                        </p>
-                    </a>
-                </li> --}}
-                {{-- @endhasrole --}}
+
+                @hasrole('super-admin|admin|kamus')
+                    <li class="nav-item {{ request()->routeIs('data_keluhan') ? 'menu-open' : '' }}">
+                        <a href="{{ route('data_keluhan') }}" class="nav-link">
+                            <i class="nav-icon far fa-envelope"></i>
+                            <p>
+                                Data Keluhan
+                            </p>
+                        </a>
+                    </li>
+                @endhasrole
             </ul>
         </nav>
     </div>
