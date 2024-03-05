@@ -34,19 +34,6 @@
             <!-- Navbar Content -->
             <div class="card-header">
                 <h4 class="card-title font-weight-bold">DATA KELUHAN PENGUNJUNG</h4>
-                {{-- <div class="card-tools">
-                    <input type="hidden" name="xnull" id="statusxid[2]" value="2">
-                    <div class="project-actions text-center">
-                        <a href="{{ route('laporan_simpanan') }}" class="btn btn-warning" role="button"
-                            data-bs-toggle="button">
-                            <i class="fas fa-print"></i>
-                            CETAK</a>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
-                            <i class="fas fa-plus"></i>
-                            TAMBAH
-                        </button>
-                    </div>
-                </div> --}}
             </div>
             <!-- /Navbar Content -->
 
@@ -55,23 +42,29 @@
                 <table id="examplePolos" class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>Username</th>
+                            <th>Nama Lengkap</th>
                             <th>Umur</th>
                             <th>No. Telpon</th>
                             <th>Alamat</th>
-                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {{-- @foreach ($datas as $index => $data) --}}
-                        <tr>
-                            <td>Id Anggota</td>
-                            <td>Nama Anggota</td>
-                            <td>Nominal Simpanan</td>
-                            <td>Tanggal</td>
-                            <td>Keterangan</td>
-                            {{-- <td class="text-center d-flex flex-column align-items-stretch" style="gap: 4px">
+                        @foreach ($datas as $visitor)
+                            <tr>
+                                <td>{{ $visitor->nama }}</td>
+                                <td>{{ $visitor->umur }}</td>
+                                <td>{{ $visitor->no_handphone }}</td>
+                                <td>{{ $visitor->alamat }}</td>
+                                <td>
+                                    <a class="btn btn-info btn-xs text-center d-flex flex-column align-items-stretch"
+                                        href=" {{ route('detail_datakeluhan', ['id' => $visitor->id]) }}">
+                                        <i class="fas fa-folder">
+                                        </i>
+                                        Lihat
+                                    </a>
+                                </td>
+                                {{-- <td class="text-center d-flex flex-column align-items-stretch" style="gap: 4px">
                                 <div class="btn btn-xs btn-primary {{ $data->status_saving_masuk }}">
                                     {{ Str::ucfirst($data->status) }}</div>
                             </td>
@@ -83,8 +76,8 @@
                                     Lihat
                                 </a>
                             </td> --}}
-                        </tr>
-                        {{-- @endforeach --}}
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
